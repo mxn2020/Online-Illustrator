@@ -135,7 +135,7 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
     const { toast } = useToast()
     const [mounted, setMounted] = useState(false)
     const { theme, setTheme } = useTheme()
-    const router = getRedirectMethod() === 'client' ? useRouter() : null;
+    const router = useRouter();
 
     const [activeTab, setActiveTab] = useState('draw')
     const [activeStrokeColor, setActiveStrokeColor] = useState('#000000')

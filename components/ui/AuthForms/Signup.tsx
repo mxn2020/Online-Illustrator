@@ -14,12 +14,13 @@ interface SignUpProps {
 }
 
 export default function SignUp({ allowEmail, redirectMethod }: SignUpProps) {
-  const router = redirectMethod === 'client' ? useRouter() : null;
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    await handleRequest(e, signUp, router);
+    await handleRequest(e, signUp, redirectMethod === 'client' ? router : null);
     setIsSubmitting(false);
   };
 

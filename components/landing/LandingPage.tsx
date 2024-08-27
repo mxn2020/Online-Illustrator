@@ -72,7 +72,7 @@ export default function LandingPage({ user, products, subscription, lang }: Land
   const dictionary = useDictionary()
   const lang_app = dictionary.app;
 
-  const router = getRedirectMethod() === 'client' ? useRouter() : null;
+  const router = useRouter();
 
   const [isDark, setIsDark] = useState(false);
   const [cookieConsent, setCookieConsent] = useState(false);

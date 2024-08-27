@@ -239,7 +239,7 @@ export default function Component() {
 
           <section className={`rounded-lg p-4 ${theme === 'minecraft' ? 'bg-[#C6C6C6] text-black' : 'bg-opacity-20 bg-white'}`}>
             <h2 className="mb-4 text-2xl font-bold">About Me</h2>
-            <p className="mb-4">I'm a passionate developer with a love for creating unique applications. My past projects have ranged from game development to productivity tools.</p>
+            <p className="mb-4">I&apos;m a passionate developer with a love for creating unique applications. My past projects have ranged from game development to productivity tools.</p>
             <h3 className="mb-2 text-xl font-bold">Upcoming Projects</h3>
             <ul className="list-inside list-disc">
               <li>AI-powered task manager</li>

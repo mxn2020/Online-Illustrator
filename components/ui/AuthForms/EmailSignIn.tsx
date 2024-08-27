@@ -19,18 +19,19 @@ export default function EmailSignIn({
   redirectMethod,
   disableButton
 }: EmailSignInProps) {
-  const router = redirectMethod === 'client' ? useRouter() : null;
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    await handleRequest(e, signInWithEmail, router);
+    await handleRequest(e, signInWithEmail, redirectMethod === 'client' ? router : null);
     setIsSubmitting(false);
   };
 
   return (
     <div className="my-8 max-w-sm mx-auto bg-secondary dark:bg-primary text-primary dark:text-secondary rounded-lg shadow-md p-8">
-    <form noValidate onSubmit={handleSubmit} className="space-y-4">
+      <form noValidate onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
           <Input
@@ -71,7 +72,7 @@ export default function EmailSignIn({
             Sign in with email and password
           </Link>
           <Link href="/signin/signup" className="block hover:underline">
-            Don't have an account? Sign up
+            Don&apos;t have an account? Sign up
           </Link>
         </div>
       )}

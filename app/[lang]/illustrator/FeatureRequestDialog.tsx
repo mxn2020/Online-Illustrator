@@ -23,13 +23,6 @@ export function FeatureRequestDialog({ open, onOpenChange }: FeatureRequestDialo
   const [userId, setUserId] = useState<string | null>(null);
   const supabase = createClient();
 
-  useEffect(() => {
-    const getUserId = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUserId(user?.id || null);
-    };
-    getUserId();
-  }, []);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -80,13 +73,22 @@ export function FeatureRequestDialog({ open, onOpenChange }: FeatureRequestDialo
     }
   };
 
+  useEffect(() => {
+    const getUserId = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUserId(user?.id || null);
+    };
+    getUserId();
+  }, [supabase.auth]);
+
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Submit a Feature Request</DialogTitle>
           <DialogDescription>
-            Let us know what features you'd like to see in our product.
+            Let us know what features you&apos;d like to see in our product.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>

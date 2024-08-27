@@ -51,13 +51,6 @@ export const IllustrationAppDemo: React.FC<IllustrationAppDemoProps> = ({ lang }
   const [dragStart, setDragStart] = useState<Point | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
-  useEffect(() => {
-    // Update layer names when language changes
-    setLayers(prevLayers => prevLayers.map((layer, index) => ({
-      ...layer,
-      name: t(`layer${index + 1}`)
-    })));
-  }, [lang]);
 
   const handleToolClick = (tool: Tool) => {
     setActiveTool(tool);
@@ -352,6 +345,15 @@ export const IllustrationAppDemo: React.FC<IllustrationAppDemoProps> = ({ lang }
     setShowDemo(true);
   };
 
+  useEffect(() => {
+    // Update layer names when language changes
+    setLayers(prevLayers => prevLayers.map((layer, index) => ({
+      ...layer,
+      name: t(`layer${index + 1}`)
+    })));
+  }, [lang]);
+
+  
   return (
     <div className="flex flex-col h-[600px] w-full max-w-[800px] mx-auto border rounded-lg overflow-hidden shadow-lg relative">
       <AnimatePresence>

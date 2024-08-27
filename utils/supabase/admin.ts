@@ -323,13 +323,145 @@ const manageSubscriptionStatusChange = async (
     );
 };
 
+const handleInvoicePaid = async (invoice: Stripe.Invoice) => {
+  const customerId = invoice.customer as string;
+  const subscriptionId = invoice.subscription as string;
+
+  const { data: customerData, error: customerError } = await supabaseAdmin
+    .from('customers')
+    .select('id')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (customerError) throw new Error(`Customer lookup failed: ${customerError.message}`);
+
+  const { id: uuid } = customerData!;
+
+  const { error: updateError } = await supabaseAdmin
+    .from('subscriptions')
+    .update({
+      status: 'active',
+      current_period_end: new Date(invoice.period_end * 1000).toISOString()
+    })
+    .eq('id', subscriptionId);
+
+  if (updateError) throw new Error(`Subscription update failed: ${updateError.message}`);
+
+  console.log(`Updated subscription [${subscriptionId}] for user [${uuid}] after invoice payment`);
+};
+
+const handleInvoicePaymentFailed = async (invoice: Stripe.Invoice) => {
+  const customerId = invoice.customer as string;
+  const subscriptionId = invoice.subscription as string;
+
+  const { data: customerData, error: customerError } = await supabaseAdmin
+    .from('customers')
+    .select('id')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (customerError) throw new Error(`Customer lookup failed: ${customerError.message}`);
+
+  const { id: uuid } = customerData!;
+
+  const { error: updateError } = await supabaseAdmin
+    .from('subscriptions')
+    .update({
+      status: 'past_due'
+    })
+    .eq('id', subscriptionId);
+
+  if (updateError) throw new Error(`Subscription update failed: ${updateError.message}`);
+
+  console.log(`Updated subscription [${subscriptionId}] for user [${uuid}] after failed payment`);
+};
+
+const handleSubscriptionTrialWillEnd = async (subscription: Stripe.Subscription) => {
+  const customerId = subscription.customer as string;
+
+  const { data: customerData, error: customerError } = await supabaseAdmin
+    .from('customers')
+    .select('id')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (customerError) throw new Error(`Customer lookup failed: ${customerError.message}`);
+
+  const { id: uuid } = customerData!;
+
+  // Here you might want to send an email to the user or update some internal records
+  console.log(`Trial ending soon for subscription [${subscription.id}] for user [${uuid}]`);
+};
+
+const handleInvoiceUpcoming = async (invoice: Stripe.Invoice) => {
+  const customerId = invoice.customer as string;
+
+  const { data: customerData, error: customerError } = await supabaseAdmin
+    .from('customers')
+    .select('id')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (customerError) throw new Error(`Customer lookup failed: ${customerError.message}`);
+
+  const { id: uuid } = customerData!;
+
+  // Here you might want to send an email to the user about the upcoming invoice
+  console.log(`Upcoming invoice for user [${uuid}]`);
+};
+
+const handleCustomerUpdated = async (customer: Stripe.Customer) => {
+  const { data: customerData, error: customerError } = await supabaseAdmin
+    .from('customers')
+    .select('id')
+    .eq('stripe_customer_id', customer.id)
+    .single();
+
+  if (customerError) throw new Error(`Customer lookup failed: ${customerError.message}`);
+
+  const { id: uuid } = customerData!;
+
+  // Here you might want to update your local customer records
+  console.log(`Customer [${uuid}] updated in Stripe`);
+};
+
+const handlePaymentIntentSucceeded = async (paymentIntent: Stripe.PaymentIntent) => {
+  // Handle successful payment intent
+  console.log(`Payment intent ${paymentIntent.id} succeeded`);
+};
+
+const handlePaymentIntentFailed = async (paymentIntent: Stripe.PaymentIntent) => {
+  // Handle failed payment intent
+  console.log(`Payment intent ${paymentIntent.id} failed`);
+};
+
+const handleCustomerDeleted = async (customer: Stripe.Customer) => {
+  const { error: deletionError } = await supabaseAdmin
+    .from('customers')
+    .delete()
+    .eq('stripe_customer_id', customer.id);
+
+  if (deletionError) throw new Error(`Customer deletion failed: ${deletionError.message}`);
+
+  console.log(`Customer deleted: ${customer.id}`);
+};
+
+
 export {
-  upsertPlanRecord, // Export the new function
-  deletePlanRecord, // Export the new function
+  upsertPlanRecord,
+  deletePlanRecord,
    upsertProductRecord,
   upsertPriceRecord,
   deleteProductRecord,
   deletePriceRecord,
   createOrRetrieveCustomer,
-  manageSubscriptionStatusChange
+  manageSubscriptionStatusChange,
+  handleInvoicePaid,
+  handleInvoicePaymentFailed,
+  handleSubscriptionTrialWillEnd,
+  handleInvoiceUpcoming,
+  handleCustomerUpdated,
+  handlePaymentIntentSucceeded,
+  handlePaymentIntentFailed,
+  handleCustomerDeleted
 };

@@ -14,10 +14,11 @@ interface PasswordSignInProps {
 }
 
 export default function PasswordSignIn({ allowEmail, redirectMethod }: PasswordSignInProps) {
-  const router = redirectMethod === 'client' ? useRouter() : null;
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmitting(true);
     await handleRequest(e, signInWithPassword, router);
     setIsSubmitting(false);
@@ -78,7 +79,7 @@ export default function PasswordSignIn({ allowEmail, redirectMethod }: PasswordS
           </Link>
         )}
         <Link href="/signin/signup" className="block hover:underline">
-          Don't have an account? Sign up
+          Don&apos;t have an account? Sign up
         </Link>
       </div>
     </div>

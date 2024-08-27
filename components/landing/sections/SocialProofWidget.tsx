@@ -34,8 +34,8 @@ export function SocialProofWidget({ lang }: Props, ) {
   return (
     <div className="fixed bottom-4 left-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
       <h3 className="text-lg font-semibold mb-2">{t('social_proof.title')}</h3>
-      <p>{t('social_proof.active_users')} " count: " {Number(stats.activeUsers).toLocaleString() }</p>
-      <p>{t('social_proof.projects_created')} " count: " {stats.projectsCreated.toLocaleString() }</p>
+      <p>{t('social_proof.active_users')} &quot; count: &quot; {Number(stats.activeUsers).toLocaleString() }</p>
+      <p>{t('social_proof.projects_created')} &quot; count: &quot; {stats.projectsCreated.toLocaleString() }</p>
     </div>
   );
 }

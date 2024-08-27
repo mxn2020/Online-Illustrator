@@ -29,7 +29,7 @@ export function TestimonialDialog({ open, onOpenChange }: TestimonialDialogProps
       setUserId(user?.id || null);
     };
     getUserId();
-  }, []);
+  }, [supabase.auth]);
 
   const handleTestimonialChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;

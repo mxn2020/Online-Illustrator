@@ -9,7 +9,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next'; // Import i18n
 import { Locale } from '@/i18n.config'
 
-export default async function IllustratorClient({
+export default function IllustratorClient({
   lang
 }: {
   lang: Locale
