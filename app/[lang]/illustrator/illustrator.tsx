@@ -236,7 +236,6 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
   
     const redirectedPathName = (locale: string) => {
 
-        console.log('currentRoute', currentRoute, locale)
         if (!currentRoute) return '/'
         const segments = currentRoute.split('/')
         segments[1] = locale
@@ -2639,26 +2638,97 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
                             height: activeArtboard ? `${activeArtboard.height}px` : '100%',
                         }}
                     >
-                        {/* SVG content remains unchanged */}
+                        <svg
+                            ref={svgRef}
+                            className="w-full h-full"
+                            onMouseDown={(e) => {
+                                if (activeTool === 'pan') {
+                                    handlePanStart(e);
+                                } else {
+                                    handleMouseDown(e);
+                                }
+                            }}
+                            onMouseMove={(e) => {
+                                if (isPanning) {
+                                    handlePanMove(e);
+                                } else {
+                                    handleMouseMove(e);
+                                }
+                            }}
+                            onMouseUp={() => {
+                                handleMouseUp();
+                                handlePanEnd();
+                            }}
+                            onMouseLeave={() => {
+                                handleMouseUp();
+                                handlePanEnd();
+                            }}
+                            style={{
+                                cursor: activeTool === 'pan' ? 'move' : 'default'
+                            }}
+                        >
+                            <g
+                                transform={`translate(${pan.x}, ${pan.y}) scale(${zoom / 100})`}
+                                style={{ transformOrigin: 'center center' }}
+                            >
+                                {renderGrid()}
+                                {renderGuides()}
+                                {layers.filter(layer => !layer.isHidden).flatMap(layer =>
+                                    layer.elements.filter(element => !element.isHidden).map(element => (
+                                        <React.Fragment key={element.id}>
+                                            {element.tool === 'pen' ? renderPenPath(element)
+                                                : element.type === 'path' ? renderPath(element) : renderShape(element)
+                                            }
+                                            {selectedElements.some(sel => sel.id === element.id) && (
+                                                <rect
+                                                    x={element.position.x - 4 / (zoom / 100)}
+                                                    y={element.position.y - 4 / (zoom / 100)}
+                                                    width={(element.dimensions.width + 8) / (zoom / 100)}
+                                                    height={(element.dimensions.height + 8) / (zoom / 100)}
+                                                    fill="none"
+                                                    stroke="#FF69B4"
+                                                    strokeWidth={2 / (zoom / 100)}
+                                                    strokeDasharray={`${4 / (zoom / 100)} ${4 / (zoom / 100)}`}
+                                                />
+                                            )}
+                                        </React.Fragment>
+                                    )
+                                    )
+                                )}
+                                {currentElement && (currentElement.type === 'path' ? renderPath(currentElement) : renderShape(currentElement))}
+
+                                {layers.flatMap(layer => layer.groups).map(group => renderGroupOutline(group))}
+
+                                {isMoving && (
+                                    <g opacity={0.4}>
+                                        {selectedElements.map(element => (
+                                            <g key={element.id} transform={`translate(${moveDelta.x}, ${moveDelta.y})`}>
+                                                {element.type === 'path' ? renderPath(element) : renderShape(element)}
+                                            </g>
+                                        ))}
+                                    </g>
+                                )}
+                            </g>
+                        </svg>
                     </div>
                     {showSelectionToolbar && (
                         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white shadow-md rounded-md p-2 flex space-x-2">
                             {isMoving ? (
                                 <div className="text-sm font-medium animate-pulse">
-                                    {t('app.moving')}: {Math.round(Math.sqrt(moveDelta.x ** 2 + moveDelta.y ** 2))}px
+                                    Moving: {Math.round(Math.sqrt(moveDelta.x ** 2 + moveDelta.y ** 2))}px
                                 </div>
                             ) : (
                                 <>
                                     <Button size="sm" variant="outline" onClick={selectAll}>
-                                        {t('app.select_all')}
+                                        Select All
                                     </Button>
                                     <Button size="sm" variant="outline" onClick={unselectAll}>
                                         <XCircle className="h-4 w-4 mr-2" />
-                                        {t('app.unselect_all')}
+                                        Unselect All
                                     </Button>
                                     <Button size="sm" variant="outline" onClick={invertSelection}>
                                         <RefreshCw className="h-4 w-4 mr-2" />
-                                        {t('app.invert_selection')}
+                                        Invert Selection
                                     </Button>
                                 </>
                             )}

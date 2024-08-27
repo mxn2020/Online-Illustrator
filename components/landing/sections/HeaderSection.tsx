@@ -35,6 +35,7 @@ export function Header({ user, lang }: HeaderProps) {
   const { t } = useDictionary()
 
   const redirectedPathName = (locale: string) => {
+    console.log('currentRoute', currentRoute)
     if (!currentRoute) return '/'
     const segments = currentRoute.split('/')
     segments[1] = locale
@@ -107,7 +108,6 @@ export function Header({ user, lang }: HeaderProps) {
               ))}
             </div>
           </div>
-
           {user ? (
             <>
               <Button asChild onClick={() => trackEvent('go_to_app_clicked', { location: 'header' })}>
