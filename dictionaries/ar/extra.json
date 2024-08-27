@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "اختر الخطة",
+    "pricing.manage_plan": "إدارة الخطة",
+    "pricing.free_plan.name": "الخطة المجانية",
+    "pricing.free_plan.feature_1": "أدوات الرسم المتنوعة",
+    "pricing.free_plan.feature_2": "الطبقات والعناصر",
+    "pricing.free_plan.feature_3": "التاريخ والتراجع",
+    "pricing.free_plan.feature_4": "العديد من العناصر التفاعلية",
+    "pricing.start_free": "ابدأ مجانًا",
+    "pricing.free": "مجاني",
+    "nav.sign_in": "تسجيل الدخول",
+    "go_to_app": "اذهب إلى التطبيق",
+    "sign_out": "تسجيل الخروج",
+    "integrations.title": "التكاملات",
+    "integrations.description": "وصف التكاملات",
+    "integrations.learn_more": "تعرف على المزيد",
+    "education.access": "الوصول",
+    "education.view_all": "عرض الكل",
+    "localization.learn_more": "تعرف على المزيد حول التوطين"
+}

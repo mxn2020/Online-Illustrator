@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "选择计划",
+    "pricing.manage_plan": "管理计划",
+    "pricing.free_plan.name": "免费计划",
+    "pricing.free_plan.feature_1": "各种绘画工具",
+    "pricing.free_plan.feature_2": "图层和元素",
+    "pricing.free_plan.feature_3": "历史记录与撤销",
+    "pricing.free_plan.feature_4": "许多互动元素",
+    "pricing.start_free": "免费开始",
+    "pricing.free": "免费",
+    "nav.sign_in": "登录",
+    "go_to_app": "前往应用",
+    "sign_out": "退出",
+    "integrations.title": "集成",
+    "integrations.description": "集成说明",
+    "integrations.learn_more": "了解更多",
+    "education.access": "访问",
+    "education.view_all": "查看全部",
+    "localization.learn_more": "了解更多关于本地化的信息"
+}

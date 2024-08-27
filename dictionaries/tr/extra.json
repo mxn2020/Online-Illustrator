@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Plan Seç",
+    "pricing.manage_plan": "Planı Yönet",
+    "pricing.free_plan.name": "Ücretsiz Plan",
+    "pricing.free_plan.feature_1": "Çeşitli Boya Araçları",
+    "pricing.free_plan.feature_2": "Katmanlar ve Öğeler",
+    "pricing.free_plan.feature_3": "Geçmiş ve Geri Al",
+    "pricing.free_plan.feature_4": "Birçok Etkileşimli Öğeler",
+    "pricing.start_free": "Ücretsiz Başla",
+    "pricing.free": "Ücretsiz",
+    "nav.sign_in": "Giriş Yap",
+    "go_to_app": "Uygulamaya Git",
+    "sign_out": "Çıkış Yap",
+    "integrations.title": "Entegrasyonlar",
+    "integrations.description": "Entegrasyonların Açıklaması",
+    "integrations.learn_more": "Daha Fazla Bilgi Edinin",
+    "education.access": "Erişim",
+    "education.view_all": "Hepsini Görüntüle",
+    "localization.learn_more": "Yerelleştirme hakkında daha fazla bilgi edinin"
+}

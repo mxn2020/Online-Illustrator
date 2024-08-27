@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Elegir Plan",
+    "pricing.manage_plan": "Gestionar Plan",
+    "pricing.free_plan.name": "Plan Gratuito",
+    "pricing.free_plan.feature_1": "Varias herramientas de pintura",
+    "pricing.free_plan.feature_2": "Capas y elementos",
+    "pricing.free_plan.feature_3": "Historial y Deshacer",
+    "pricing.free_plan.feature_4": "Muchos elementos interactivos",
+    "pricing.start_free": "Comenzar Gratis",
+    "pricing.free": "Gratis",
+    "nav.sign_in": "Iniciar sesión",
+    "go_to_app": "Ir a la aplicación",
+    "sign_out": "Cerrar sesión",
+    "integrations.title": "Integraciones",
+    "integrations.description": "Descripción de las integraciones",
+    "integrations.learn_more": "Saber más",
+    "education.access": "Acceso",
+    "education.view_all": "Ver todo",
+    "localization.learn_more": "Más información sobre la localización"
+}

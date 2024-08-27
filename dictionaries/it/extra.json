@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Scegli il piano",
+    "pricing.manage_plan": "Gestisci il piano",
+    "pricing.free_plan.name": "Piano Gratuito",
+    "pricing.free_plan.feature_1": "Varie strumenti di pittura",
+    "pricing.free_plan.feature_2": "Livelli ed elementi",
+    "pricing.free_plan.feature_3": "Cronologia e Annulla",
+    "pricing.free_plan.feature_4": "Molti elementi interattivi",
+    "pricing.start_free": "Inizia Gratis",
+    "pricing.free": "Gratuito",
+    "nav.sign_in": "Accedi",
+    "go_to_app": "Vai all'app",
+    "sign_out": "Esci",
+    "integrations.title": "Integrazioni",
+    "integrations.description": "Descrizione delle integrazioni",
+    "integrations.learn_more": "Scopri di più",
+    "education.access": "Accesso",
+    "education.view_all": "Vedi tutto",
+    "localization.learn_more": "Scopri di più sulla localizzazione"
+}

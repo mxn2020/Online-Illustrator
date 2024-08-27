@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Choose Plan",
+    "pricing.manage_plan": "Manage Plan",
+    "pricing.free_plan.name": "Free Plan",
+    "pricing.free_plan.feature_1": "Various Paint tools",
+    "pricing.free_plan.feature_2": "Layers and Elements",
+    "pricing.free_plan.feature_3": "History and Undo",
+    "pricing.free_plan.feature_4": "Many interactive elements",
+    "pricing.start_free": "Start Free",
+    "pricing.free": "Free",
+    "nav.sign_in": "Sign In",
+    "go_to_app": "Go to App",
+    "sign_out": "Sign Out",
+    "integrations.title": "Integrations",
+    "integrations.description": "Description of integrations",
+    "integrations.learn_more": "Learn More",
+    "education.access": "Access",
+    "education.view_all": "View All",
+    "localization.learn_more": "Learn More about Localization"
+}

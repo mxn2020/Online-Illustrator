@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Escolher Plano",
+    "pricing.manage_plan": "Gerenciar Plano",
+    "pricing.free_plan.name": "Plano Gratuito",
+    "pricing.free_plan.feature_1": "Várias Ferramentas de Pintura",
+    "pricing.free_plan.feature_2": "Camadas e Elementos",
+    "pricing.free_plan.feature_3": "Histórico e Desfazer",
+    "pricing.free_plan.feature_4": "Muitos Elementos Interativos",
+    "pricing.start_free": "Começar Gratuito",
+    "pricing.free": "Gratuito",
+    "nav.sign_in": "Entrar",
+    "go_to_app": "Ir para o App",
+    "sign_out": "Sair",
+    "integrations.title": "Integrações",
+    "integrations.description": "Descrição das Integrações",
+    "integrations.learn_more": "Saiba mais",
+    "education.access": "Acesso",
+    "education.view_all": "Ver todos",
+    "localization.learn_more": "Saiba mais sobre Localização"
+}

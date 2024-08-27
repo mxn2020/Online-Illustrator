@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Kies een plan",
+    "pricing.manage_plan": "Beheer plan",
+    "pricing.free_plan.name": "Gratis Plan",
+    "pricing.free_plan.feature_1": "Verschillende schildergereedschappen",
+    "pricing.free_plan.feature_2": "Lagen en elementen",
+    "pricing.free_plan.feature_3": "Geschiedenis en Ongedaan maken",
+    "pricing.free_plan.feature_4": "Veel interactieve elementen",
+    "pricing.start_free": "Start Gratis",
+    "pricing.free": "Gratis",
+    "nav.sign_in": "Inloggen",
+    "go_to_app": "Ga naar de app",
+    "sign_out": "Uitloggen",
+    "integrations.title": "Integraties",
+    "integrations.description": "Beschrijving van integraties",
+    "integrations.learn_more": "Meer informatie",
+    "education.access": "Toegang",
+    "education.view_all": "Alles bekijken",
+    "localization.learn_more": "Meer informatie over Lokalisatie"
+}

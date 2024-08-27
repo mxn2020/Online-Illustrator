@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Plan auswählen",
+    "pricing.manage_plan": "Plan verwalten",
+    "pricing.free_plan.name": "Kostenloser Plan",
+    "pricing.free_plan.feature_1": "Verschiedene Zeichenwerkzeuge",
+    "pricing.free_plan.feature_2": "Ebenen und Elemente",
+    "pricing.free_plan.feature_3": "Verlauf und Rückgängig",
+    "pricing.free_plan.feature_4": "Viele interaktive Elemente",
+    "pricing.start_free": "Kostenlos starten",
+    "pricing.free": "Kostenlos",
+    "nav.sign_in": "Anmelden",
+    "go_to_app": "Zur App",
+    "sign_out": "Abmelden",
+    "integrations.title": "Integrationen",
+    "integrations.description": "Beschreibung der Integrationen",
+    "integrations.learn_more": "Mehr erfahren",
+    "education.access": "Zugriff",
+    "education.view_all": "Alle anzeigen",
+    "localization.learn_more": "Mehr über Lokalisierung erfahren"
+}
