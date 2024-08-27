@@ -1,5 +1,6 @@
 'use client'
 
+import NextImage from 'next/image';
 import { handleRequest } from '@/utils/auth-helpers/client';
 import { SignOut } from '@/utils/auth-helpers/server';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -128,6 +129,9 @@ type Preferences = {
 interface IllustratorProps {
     lang: Locale;
 }
+
+import avatarImage from '@/public/images/avatar2.jpg';
+import Logo from '@/public/images/Logo.jpg';
 
 
 export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
@@ -2119,7 +2123,7 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
             <div className="h-12 bg-muted border-b flex items-center justify-between px-4">
                 <div className="flex items-center space-x-4">
                     <Avatar>
-                        <AvatarImage src="/Logo.jpg" alt="@IllustratorPro" />
+                        <AvatarImage src={Logo.src} alt="@IllustratorPro" />
                         <AvatarFallback>IL</AvatarFallback>
                     </Avatar>
                     {isEditingName ? (
@@ -2361,7 +2365,8 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
                         <DropdownMenuTrigger asChild>
                             <Button variant="ghost" size="icon">
                                 <Avatar>
-                                    <AvatarImage src="/avatar2.jpg" alt="@IllustratorPro" />
+                                    {/*<Image src={avatarImage} alt="Avatar" />*/}
+                                    <AvatarImage src={avatarImage.src} alt="@IllustratorPro" />
                                     <AvatarFallback>O</AvatarFallback>
                                 </Avatar>
                             </Button>
