@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "プランを選ぶ",
+    "pricing.manage_plan": "プランを管理",
+    "pricing.free_plan.name": "無料プラン",
+    "pricing.free_plan.feature_1": "さまざまなペイントツール",
+    "pricing.free_plan.feature_2": "レイヤーと要素",
+    "pricing.free_plan.feature_3": "履歴と元に戻す",
+    "pricing.free_plan.feature_4": "多数のインタラクティブ要素",
+    "pricing.start_free": "無料で始める",
+    "pricing.free": "無料",
+    "nav.sign_in": "サインイン",
+    "go_to_app": "アプリに移動",
+    "sign_out": "サインアウト",
+    "integrations.title": "統合機能",
+    "integrations.description": "統合機能の説明",
+    "integrations.learn_more": "さらに詳しく",
+    "education.access": "アクセス",
+    "education.view_all": "すべてを見る",
+    "localization.learn_more": "ローカリゼーションについて詳しく"
+}

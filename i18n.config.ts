@@ -1,3 +1,4 @@
+// Define the i18n configuration with supported locales
 export const i18n = {
   defaultLocale: 'en',
   locales: [
@@ -6,14 +7,17 @@ export const i18n = {
     'en',
     'es',
     'es-mx',
+    'fa',
     'fr',
     'it',
+    'ja',
     'nl',
     'pt',
     'pt-br',
+    'ru',
     'tr',
     'zh',
   ],
-} as const
+} as const;
 
-export type Locale = (typeof i18n)['locales'][number]
+export type Locale = (typeof i18n)['locales'][number];

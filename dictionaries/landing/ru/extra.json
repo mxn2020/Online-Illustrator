@@ -1,0 +1,20 @@
+{
+    "pricing.choose_plan": "Выбрать план",
+    "pricing.manage_plan": "Управлять планом",
+    "pricing.free_plan.name": "Бесплатный план",
+    "pricing.free_plan.feature_1": "Различные инструменты рисования",
+    "pricing.free_plan.feature_2": "Слои и элементы",
+    "pricing.free_plan.feature_3": "История и отмена действий",
+    "pricing.free_plan.feature_4": "Множество интерактивных элементов",
+    "pricing.start_free": "Начать бесплатно",
+    "pricing.free": "Бесплатно",
+    "nav.sign_in": "Войти",
+    "go_to_app": "Перейти в приложение",
+    "sign_out": "Выйти",
+    "integrations.title": "Интеграции",
+    "integrations.description": "Описание интеграций",
+    "integrations.learn_more": "Узнать больше",
+    "education.access": "Доступ",
+    "education.view_all": "Посмотреть все",
+    "localization.learn_more": "Узнать больше о локализации"
+}
