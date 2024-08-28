@@ -3,11 +3,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactMarkdown from 'react-markdown';
 
-interface ChatMessagesProps {
+interface ChatMessageProps {
   message: { role: string; content: string; timestamp: Date };
 }
 
-const ChatMessage: React.FC<ChatMessagesProps> = ({ message }) => {
+const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   return (
     <div className={`mb-4 ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
       <div className={`inline-block p-2 rounded-lg ${
@@ -20,12 +20,13 @@ const ChatMessage: React.FC<ChatMessagesProps> = ({ message }) => {
               return match ? (
                 <SyntaxHighlighter
                   {...props}
-                  children={String(children).replace(/\n$/, '')}
                   style={tomorrow}
                   language={match[1]}
                   PreTag="div"
                   ref={React.createRef()}
-                />
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
               ) : (
                 <code {...props} className={className}>
                   {children}

@@ -285,7 +285,7 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
 
     useEffect(() => {
         loadProjectsFromLocalStorage();
-    }, []);
+    }, [loadProjectsFromLocalStorage]);
 
 
 
