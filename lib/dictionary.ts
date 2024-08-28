@@ -4,17 +4,14 @@ import { AppName, Dictionary } from './types';
 
 const cache = new Map<string, Dictionary>();
 
-// Function to load dictionaries for each app and language
 async function loadLanguageDictionaries(appName: AppName, lang: Locale): Promise<Dictionary> {
   const cacheKey = `${appName}-${lang}`;
   if (cache.has(cacheKey)) {
-    return cache.get(cacheKey) as Dictionary;
+    return cache.get(cacheKey)!;
   }
 
   const dictionaryFiles: Record<AppName, (() => Promise<Dictionary>)[]> = {
-    illustrator: [
-      () => import(`@/dictionaries/illustrator/${lang}/app.json`).then(m => m.default),
-    ],
+    illustrator: [() => import(`@/dictionaries/illustrator/${lang}/app.json`).then(m => m.default)],
     landing: [
       () => import(`@/dictionaries/landing/${lang}/common.json`).then(m => m.default),
       () => import(`@/dictionaries/landing/${lang}/demo.json`).then(m => m.default),
@@ -23,22 +20,16 @@ async function loadLanguageDictionaries(appName: AppName, lang: Locale): Promise
   };
 
   const dictionariesToLoad = dictionaryFiles[appName];
-
   if (!dictionariesToLoad) {
     throw new Error(`No dictionaries found for app: ${appName}`);
   }
 
-  const dictionaries = await Promise.all(dictionariesToLoad.map(load => load()));
-
-  const combinedDictionary = Object.assign({}, ...dictionaries);
-
+  const combinedDictionary = Object.assign({}, ...(await Promise.all(dictionariesToLoad.map(load => load()))));
   cache.set(cacheKey, combinedDictionary);
 
   return combinedDictionary;
 }
 
-
-// Define the dictionaries object
 const dictionaries: Record<AppName, Record<Locale, () => Promise<Dictionary>>> = {
   illustrator: {
     ar: () => loadLanguageDictionaries('illustrator', 'ar'),
@@ -73,13 +64,13 @@ const dictionaries: Record<AppName, Record<Locale, () => Promise<Dictionary>>> =
     ru: () => loadLanguageDictionaries('landing', 'ru'),
     tr: () => loadLanguageDictionaries('landing', 'tr'),
     zh: () => loadLanguageDictionaries('landing', 'zh'),
-  },
+  }
 };
 
-// Function to get a dictionary for a specific app and locale
 export const getDictionary = async (appName: AppName, locale: Locale): Promise<Dictionary> => {
-  if (!dictionaries[appName] || !dictionaries[appName][locale]) {
+  const appDictionaries = dictionaries[appName];
+  if (!appDictionaries || !appDictionaries[locale]) {
     throw new Error(`No dictionary found for app: ${appName} and locale: ${locale}`);
   }
-  return dictionaries[appName][locale]();
+  return appDictionaries[locale]();
 };

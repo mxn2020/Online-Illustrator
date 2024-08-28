@@ -283,9 +283,6 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
         setMounted(true)
     }, [])
 
-    useEffect(() => {
-        loadProjectsFromLocalStorage();
-    }, [loadProjectsFromLocalStorage]);
 
 
 
@@ -397,6 +394,11 @@ export const Illustrator: React.FC<IllustratorProps> = ({ lang }) => {
             </AlertDialogContent>
         </AlertDialog>
     );
+
+    useEffect(() => {
+        loadProjectsFromLocalStorage();
+    }, [loadProjectsFromLocalStorage]);
+
 
     useEffect(() => {
         setShowSelectionToolbar(selectedElements.length > 0)

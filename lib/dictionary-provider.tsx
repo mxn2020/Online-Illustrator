@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getDictionary } from '@/lib/dictionary';
-
-type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
+import type { Dictionary } from '@/lib/types';
 
 const DictionaryContext = React.createContext<Dictionary | null>(null);
 
@@ -21,27 +20,7 @@ export default function DictionaryProvider({
   );
 }
 
-function replaceVariables(str: string, variables?: Record<string, string | number>): string {
-  if (!variables) {
-    return str;
-  }
-
-  return str.replace(/{{\s*(.*?)\s*}}/g, (_, variable) => {
-    return variables[variable] !== undefined ? String(variables[variable]) : `{{ ${variable} }}`;
-  });
-}
-
-
 function getTranslation(dictionary: Dictionary, key: string, variables?: Record<string, string | number>): string {
-  // First, check for the exact dotted key in the dictionary
-  if (key in dictionary) {
-    let value = dictionary[key];
-    if (typeof value === 'string') {
-      return replaceVariables(value, variables);
-    }
-  }
-
-  // If not found, try to resolve it as a nested key
   const keys = key.split('.');
   let result: any = dictionary;
 
@@ -50,18 +29,23 @@ function getTranslation(dictionary: Dictionary, key: string, variables?: Record<
       result = result[k];
     } else {
       console.warn(`Translation key "${key}" not found. Using key as fallback.`);
-      return key; // Return the original key if any part of the path is invalid
+      return key;
     }
   }
 
-  return typeof result === 'string' ? replaceVariables(result, variables) : key; // Return the final value if it's a string, otherwise return the key
+  return typeof result === 'string' ? replaceVariables(result, variables) : key;
 }
 
+function replaceVariables(str: string, variables?: Record<string, string | number>): string {
+  return str.replace(/{{\s*(.*?)\s*}}/g, (_, variable) => {
+    return variables?.[variable] !== undefined ? String(variables[variable]) : `{{ ${variable} }}`;
+  });
+}
 
-export function useDictionary() {
-  const dictionary = React.useContext(DictionaryContext) as Dictionary | null;
+export function useDictionary(): { dictionary: Dictionary; t: (key: string, variables?: Record<string, string | number>) => string } {
+  const dictionary = React.useContext(DictionaryContext);
 
-  if (dictionary === null) {
+  if (!dictionary) {
     throw new Error('useDictionary hook must be used within DictionaryProvider');
   }
 
@@ -69,5 +53,5 @@ export function useDictionary() {
     return getTranslation(dictionary, key, variables);
   };
 
-  return { ...dictionary, t: translate };
+  return { dictionary, t: translate };
 }

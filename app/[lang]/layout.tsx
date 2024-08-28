@@ -36,7 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const dictionary = await getDictionary(params.lang)
+  const dictionary = await getDictionary('landing', params.lang)
 
   return (
     <html lang="en" suppressHydrationWarning>

@@ -80,13 +80,13 @@ export function PricingSection({ user, products, subscription, lang }: Props, ) 
 
   // Define the static Free Plan
   const freePlan = {
-    name: t('pricing.free_plan.name', 'Free Plan'),
+    name: t('pricing.free_plan.name'),
     price: 0,
     features: [
-      t('pricing.free_plan.feature_1', 'Various Paint tools'),
-      t('pricing.free_plan.feature_2', 'Layers and Elements'),
-      t('pricing.free_plan.feature_3', 'History and Undo'),
-      t('pricing.free_plan.feature_3', 'Many interactive elements'),
+      t('pricing.free_plan.feature_1'),
+      t('pricing.free_plan.feature_2'),
+      t('pricing.free_plan.feature_3'),
+      t('pricing.free_plan.feature_3'),
     ],
     stripePrice: null,
     isFree: true,
@@ -120,7 +120,7 @@ export function PricingSection({ user, products, subscription, lang }: Props, ) 
     <section id="pricing" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          {t('pricing.title', 'Our Pricing Plans')}
+          {t('pricing.title')}
         </h2>
         <div className="flex justify-center items-center mb-8">
           <span
@@ -128,7 +128,7 @@ export function PricingSection({ user, products, subscription, lang }: Props, ) 
               !isYearly ? 'text-gray-900 dark:text-gray-100 font-semibold' : 'text-gray-600 dark:text-gray-400'
             }`}
           >
-            {t('pricing.monthly', 'Monthly')}
+            {t('pricing.monthly')}
           </span>
           <Switch
             checked={isYearly}
@@ -142,7 +142,7 @@ export function PricingSection({ user, products, subscription, lang }: Props, ) 
               isYearly ? 'text-gray-900 dark:text-gray-100 font-semibold' : 'text-gray-600 dark:text-gray-400'
             }`}
           >
-            {t('pricing.yearly', 'Yearly')}
+            {t('pricing.yearly')}
           </span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -160,14 +160,14 @@ export function PricingSection({ user, products, subscription, lang }: Props, ) 
                 <h3 className="text-2xl font-bold mb-4">{plan?.name}</h3>
                 <div className="text-4xl font-bold mb-6">
                   {plan?.isFree ? (
-                    t('pricing.free', 'Free')
+                    t('pricing.free')
                   ) : (
                     <>
                       ${plan?.price}
                       <span className="text-base font-normal text-gray-600 dark:text-gray-400">
                         {isYearly
-                          ? t('pricing.per_year', '/year')
-                          : t('pricing.per_month', '/month')}
+                          ? t('pricing.per_year')
+                          : t('pricing.per_month')}
                       </span>
                     </>
                   )}

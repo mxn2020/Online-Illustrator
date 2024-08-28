@@ -69,9 +69,6 @@ interface LandingPageProps {
 
 export default function LandingPage({ user, products, subscription, lang }: LandingPageProps) {
 
-  const dictionary = useDictionary()
-  const lang_app = dictionary.app;
-
   const router = useRouter();
 
   const [isDark, setIsDark] = useState(false);
