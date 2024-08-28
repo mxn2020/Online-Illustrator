@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion'
 import { Brush, Layers, Zap, Share2 } from 'lucide-react'
 import { Locale } from '@/i18n.config'
 import { useDictionary } from '@/lib/dictionary-provider'
-import { trackEvent } from '../tools'
+import { trackEvent } from '@/utils/tools'
 
 interface Props {
   lang: Locale;

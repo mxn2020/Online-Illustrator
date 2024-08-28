@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 import { Locale } from '@/i18n.config'
 import { useDictionary } from '@/lib/dictionary-provider'
-import { trackEvent } from '../tools'
+import { trackEvent } from '@/utils/tools'
 
 interface Props {
   lang: Locale;

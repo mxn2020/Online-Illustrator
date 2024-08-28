@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
-import { ABTestContext, trackEvent } from '../tools';
+import { ABTestContext, trackEvent } from '@/utils/tools';
 import { Locale, i18n } from '@/i18n.config'
 import { useDictionary } from '@/lib/dictionary-provider'
 

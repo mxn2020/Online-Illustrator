@@ -40,7 +40,7 @@ import { Save, FileText, Pen, PlusCircle, Globe } from 'lucide-react';
 import TestimonialDialog from './TestimonialDialog';
 import FeatureRequestDialog from './FeatureRequestDialog';
 
-import { ThemeContext, ABTestProvider, GamificationProvider, trackEvent, loadTranslations } from '@/components/landing/tools';
+import { ThemeContext, ABTestProvider, GamificationProvider, trackEvent, loadTranslations } from '@/utils/tools';
 
 type Project = {
     id: string;

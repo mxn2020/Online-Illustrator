@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import OpenAI from 'openai';
-import { ThemeContext, ABTestProvider, GamificationProvider, trackEvent, loadTranslations } from '@/components/landing/tools';
+import { ThemeContext, ABTestProvider, GamificationProvider, trackEvent, loadTranslations } from '@/utils/tools';
 import { useDictionary } from '@/lib/dictionary-provider';
 import ChatMessages from './AIChatbot-ChatMessages';
 

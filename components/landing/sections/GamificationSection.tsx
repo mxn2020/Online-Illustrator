@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Trophy, CheckCircle } from 'lucide-react'
 import { Locale } from '@/i18n.config'
 import { useDictionary } from '@/lib/dictionary-provider'
-import { GamificationContext } from '../tools'
+import { GamificationContext } from '@/utils/tools'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 

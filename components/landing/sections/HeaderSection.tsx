@@ -14,7 +14,7 @@ import { getRedirectMethod } from '@/utils/auth-helpers/settings'
 import { SignOut } from '@/utils/auth-helpers/server'
 import { handleRequest } from '@/utils/auth-helpers/client'
 
-import { ABTestContext, trackEvent } from '../tools'
+import { ABTestContext, trackEvent } from '@/utils/tools'
 
 const ThemeContext = React.createContext({
   isDark: false,

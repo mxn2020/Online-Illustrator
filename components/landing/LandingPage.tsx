@@ -43,7 +43,7 @@ import { getRedirectMethod } from '@/utils/auth-helpers/settings';
 import { SignOut } from '@/utils/auth-helpers/server';
 import { handleRequest } from '@/utils/auth-helpers/client';
 
-import { ThemeContext, ABTestProvider, GamificationProvider, trackEvent, loadTranslations } from './tools';
+import { ThemeContext, ABTestProvider, GamificationProvider, trackEvent, loadTranslations } from '@/utils/tools';
 import { Locale, i18n } from '@/i18n.config'
 import { useDictionary } from '@/lib/dictionary-provider'
 
@@ -68,6 +68,11 @@ interface LandingPageProps {
 }
 
 export default function LandingPage({ user, products, subscription, lang }: LandingPageProps) {
+
+  const { dictionary } = useDictionary();
+
+  const langApp = dictionary.landing;
+
 
   const router = useRouter();
 
