@@ -42,6 +42,7 @@ function replaceVariables(str: string, variables?: Record<string, string | numbe
   });
 }
 
+
 export function useDictionary(): { dictionary: Dictionary; t: (key: string, variables?: Record<string, string | number>) => string } {
   const dictionary = React.useContext(DictionaryContext);
 

@@ -67,10 +67,18 @@ const dictionaries: Record<AppName, Record<Locale, () => Promise<Dictionary>>> =
   }
 };
 
-export const getDictionary = async (appName: AppName, locale: Locale): Promise<Dictionary> => {
-  const appDictionaries = dictionaries[appName];
-  if (!appDictionaries || !appDictionaries[locale]) {
-    throw new Error(`No dictionary found for app: ${appName} and locale: ${locale}`);
+const defaultDictionary: Dictionary = new Proxy({} as Dictionary, {
+  get: (target, prop) => {
+    return new Proxy({} as Record<string, string>, {
+      get: (_, key) => String(key)
+    });
   }
-  return appDictionaries[locale]();
+});
+
+export const getDictionary = async (appName: AppName, locale: Locale): Promise<Dictionary> => {
+  if (!dictionaries[appName] || !dictionaries[appName][locale]) {
+    console.warn(`No dictionary found for app: ${appName} and locale: ${locale}. Using default dictionary.`);
+    return defaultDictionary;
+  }
+  return dictionaries[appName][locale]();
 };
